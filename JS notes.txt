@@ -1,0 +1,47 @@
+Intro to JS
+-----------
+ Data types-
+ String
+ Number
+ Boolean
+
+ Variables-
+ 
+ var myName="Mitadru"
+ var is only used while creating varaiable in a context
+ var yourName=prompt("What is your name?")
+ alert();
+ console.log();
+only $ and _ can be used in variable name
+word.length
+name="Mitadru"
+name.slice(1,5)= itad
+.toUpperCase()
+.toLowerCase()
+Math.floor(),Math.ceil()
+Math.pow(number,power)
+Math.round()
+---------------
+Intermediate JS
+
+Math.random()= 0 to 0.9999 to 16 decimal places
+if(track===x){func1();}
+else{func2();}
+=== -> checks data type to 1==="1" is false
+== -> Doesnt check data type 1=="1" is true 
+var arr=["a","b","c","d","e"]
+arr[0]=a
+arr.length=5
+arr.includes("a")=true
+arr.push("f")=var arr=["a","b","c","d","e","f"]
+
+var i=1;
+while(i<2){
+    console.log(i);
+    i++;
+}
+--------------
+DOM
+
+To select text between tags is .innerHTML
+object.classList.add() ,remove,toggle

@@ -1,0 +1,17 @@
+git init - make local repo
+git status - track staging area
+git add <file> or .(for all files) - add file to staging area to be tracked
+gir rm --cached -r(recursive) . -> remove files from staged area
+git commit -m "Message" - commit changes
+git log - check git commit history
+git diff <file> - to check difference between current state and last commit
+git checkout <file> - reverts to last commit
+git remote add origin(name of the repo can be anything) url.git -> add remote repo
+git push -u origin main -> -u links local and remote repo
+.gitignore-> files to ignore when commiting (add file names in line after another)(wild card \*.txt -> ignore all txt files)
+git clone url.git
+git branch branch-name -> creates new branch
+git branch -> list of branches
+\*->(shows which branch on)
+git checkout branch-name -> changes branch
+git merge branch-name (make sure active branch is with which you want to marge new branch)

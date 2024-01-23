@@ -1,0 +1,85 @@
+Void element <hr /> <br /> <img />
+../ -> one level up, ./ -> current level,
+! -> for Boilerplate of HTML in VS code
+
+
+CSS->
+ .class #id
+ p[attribute]{color:blue}
+ p[attribute="value"]{color:blue}
+ *{}->universal selector
+ css specificity
+ 1px=1/96 inch, 1pt=1/72 inch -> font size default unit, 1 em= 100% of parent size, 1 rem= 100% of root(<html>)->recomended
+ Hint: You horizontally center a div by giving it a width of 50% and a margin-left of 25%.
+ Hint: Set the image to have a width of 100% so it fills the div.
+ Position -> lower down in css gets more priority
+ Inline>Internal>External ->Type
+ id>attribute>class>element->specificity
+ Importance -> color : green !important -> Gets most Importance
+ Importance>Type>specificity>Position
+ Syntax-> Parent-selector>child-selector(direct child){}
+ Chaining -> element#id.class{}
+ Flex -> content width<width<flex-basis<min-width,max-width
+ Flex : 1 1 0 (grow shrink basis)= flex:1
+"order:0" by default for fle and grid items
+grid-area : 2/1/3/3={grid-row-start/grid-column-start/grid-row-end/grid-column-end}
+If using grid-area, all other grid elements should use grid area
+Put custom stylesheet after bootstrap stylesheet to override.
+---------------------
+Colour Theory
+
+Red-Love Energy Intensity
+Yellow-Joy Intellect Attention
+Green-Freshness Safety Growth
+Blue-Stability Trust Serenity
+Purple- Royalty Wealth Feminity
+Analogous colour- together in colour wheel (harmonious for nav bars)
+Complementary colour palette- opposite in color wheel(Makes colour pop- not for text)
+Adobe colour for selecting colour palette
+--------------------
+Typography
+
+Font - serif more serious/old (legal serious things)
+Serif- Tradition stable respectable
+sans-serif- Sensible Simple Straightforward
+Script- Personal Creative Elegant
+Display- Friendly Loud Amusing
+Modern- Stylish Chic Smart
+
+Time era- ratio of thin and thick, more is modern
+
+Keep fonts to limit of 2 styles
+similar mood and time Era
+contrast serif and sans serif + weights
+--------------------
+
+Manage Attention
+
+Hierarchy
+1) Colour Pop out from background
+2) Size 
+
+Layout
+40-60 characters per line
+
+Alignment
+Make alignment consistent
+Get maximum items starting from same Point of alignment 
+
+White space
+Minimalist Elevated (Luxury stores and Apple use it)
+
+Audience
+Most important 
+------------------
+User Experience
+
+1) Simplicity
+2) Consistency 
+3) Reading Pattern - The F layout(User see 1st line then scan rows for next interesting thing)
+hence use F layout have important things towards left
+The Z layout for websites which are meant to be browsed faster with video content(FB uses this)
+5) All platform design
+------------------
+
+
