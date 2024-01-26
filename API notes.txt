@@ -1,0 +1,5 @@
+JSON objects are flat packed by
+const jsondata=JSON.stringify(data i.e Javascript-object)
+Then unpacked by
+const data=JSON.parse(jsondata)
+authorization allows to use api -- authentication helps identify the user
