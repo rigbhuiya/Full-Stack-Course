@@ -1,0 +1,14 @@
+Babel is JS compiler that comes from react module converts code to plain old JS
+code in { } will be JS inside html only expressions not statements
+`` makes it string in JS
+class for css is className, everything is camel case inside jsx because it is not html
+https://github.com/airbnb/javascript/tree/master/react - airbnb standard for react
+npx create-react-app my-app
+npm start
+Functional programming -> passing functions in functions
+array.map(function)-> loops through array and passes each element to function
+Handy array functions map filter reduce find findIndex
+setInterval(action, time in ms)
+https://legacy.reactjs.org/docs/forms.html#controlled-components
+... spread operator
+for form event.preventDefault
