@@ -15,7 +15,7 @@ flex-direction:row,column
 flex-wrap:nowrap,wrap;
 justify-content:centre=along main axis
 align-content:centre=works with wrap
-align-item:centre
+align-items:centre
 
 }
 .flex-content{
@@ -35,6 +35,27 @@ max-width by default is longest line
 min-width by default is longest word
 
 <-----------------------------------Grid----------------------------------->
+
+.grid-container{
+   display:grid;
+   grid-template-columns: 1fr 2fr, 100px 200px, auto 200px, 200px minmax(100px,200px);
+   grid-template-rows: 1 fr 1fr, 100px 300px, 100px auto,repeat(2,200px);
+   grid-template: 100px 200px / 100px 200px=row/coluns
+   grid-auto-rows:
+   grid-auto-columns:
+
+}
+
+.grid-content{
+   grid-column: span 2;
+   grid-column-start:
+   grid-column-end:
+   grid-row-start:
+   grid-row-end:
+   grid-area:=grid-row-start/grid-column-start/grid-row-end/grid-column-end
+   order:
+
+}
 
 <-----------------------------------CSS----------------------------------->
 .class #id
@@ -64,6 +85,7 @@ display:block=full width,inline=cannot set height width depends on content, inli
 float:left,right to clear clear:left,right,both
 @media(max-width:600px)
 flex is 1d grid is 2d
+color=#E5833180(r,g,b,transparency)(80 is almost 50% transparency)
 
 ---
 
