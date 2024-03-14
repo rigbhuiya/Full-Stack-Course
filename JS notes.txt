@@ -5,7 +5,116 @@ Intro to JS
  Number
  Boolean
 
- Variables-
+<script type="text/javascript">javascript here</script>
+<script src="javascriptfile.js" type="text/javascript"></script>
+
+
+<---------------- JS Funcs ---------------->
+alert
+prompt
+
+Strings-
+
+word.length
+name="Mitadru"
+name.slice(1,5)= itad
+.toUpperCase()
+.toLowerCase()
+
+Numbers-
+
+Math.floor(),Math.ceil()
+Math.pow(number,power)
+Math.round()
+Math.random()-> 16 decimal placed number between 0 to less than 1
+Math.random()= 0 to 0.9999 to 16 decimal places
+
+Conditionals-
+
+if(track===x){func1();}
+else{func2();}
+=== -> checks data type to 1==="1" is false
+== -> Doesnt check data type 1=="1" is true 
+
+
+switch(document.innerText){
+    case "w": code....
+    break;-> tells to exit switch block
+
+    default:(kind of like else if case for switch is not there)
+}
+
+Loops-
+
+var i=1;
+while(i<2){
+    console.log(i);
+    i++;
+}
+
+
+array-
+
+var arr=["a","b","c","d","e"]
+arr[0]=a
+arr.length=5
+arr.includes("a")=true
+arr.push("f")=var arr=["a","b","c","d","e","f"]
+arr.pop=["a","b","c","d","e"]
+
+
+
+
+<--------------------DOM-------------------->
+
+Catalogs webpage into individual objects that we can selectand manipulate
+The Browser converts html into DOM
+DOM is represented by tree structure
+Everything is in Object called document
+
+var heading=document.firstElementChild.lastElementChild(firstElementChild=1st object under previous object)
+heading.innerHTML=<h1>Some HTMl content<h1>
+heading.style.color="red";
+document.querySelector("h1").click()
+
+document.getElementsByTagNames("li")= returns array
+document.getElementsByClassName("btn")
+document.getElementById("home-btn")
+document.querySelector("selector")[h1,.class,#id] can also combine selector like in CSS, also if there are multiple will only get 1st Item
+document.querySelectorAll("selector")- returns array
+object.classList.add("classname") ,remove,toggle
+
+DOM properties
+.innerHTML=gives html inside object selected
+.textContent=gives text inside object
+.attributes=gives attributes of object
+.getAttribute("href")=gives particular attribute of object
+.setAttribute("href","value")
+
+
+DOM methods
+
+
+
+
+To select text between tags is .innerHTML
+
+
+
+
+
+<----------------NOTES--------------->
+var vs let vs const-
+var declarations are globally scoped or function scoped while let and const are block scoped.
+var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.
+They are all hoisted to the top of their scope. But while var variables are initialized with undefined, let and const variables are not initialized.
+While var and let can be declared without being initialized, const must be initialized during declaration.
+
+Only $ and _ is allowed in variable names
+variables are camel cased
+
+
+Variables-
  
  var myName="Mitadru"
  var is only used while creating varaiable in a context
@@ -13,35 +122,5 @@ Intro to JS
  alert();
  console.log();
 only $ and _ can be used in variable name
-word.length
-name="Mitadru"
-name.slice(1,5)= itad
-.toUpperCase()
-.toLowerCase()
-Math.floor(),Math.ceil()
-Math.pow(number,power)
-Math.round()
----------------
-Intermediate JS
 
-Math.random()= 0 to 0.9999 to 16 decimal places
-if(track===x){func1();}
-else{func2();}
-=== -> checks data type to 1==="1" is false
-== -> Doesnt check data type 1=="1" is true 
-var arr=["a","b","c","d","e"]
-arr[0]=a
-arr.length=5
-arr.includes("a")=true
-arr.push("f")=var arr=["a","b","c","d","e","f"]
-
-var i=1;
-while(i<2){
-    console.log(i);
-    i++;
-}
---------------
-DOM
-
-To select text between tags is .innerHTML
-object.classList.add() ,remove,toggle
+setTimeOut(function,delaytime in ms)

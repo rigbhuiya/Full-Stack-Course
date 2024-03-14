@@ -2,6 +2,14 @@ Void element <hr /> <br /> <img />
 ../ -> one level up, ./ -> current level,
 ! -> for Boilerplate of HTML in VS code
 
+<link rel="stylesheet" href="./style.css" /> external css
+<style> internal css
+h1 {
+    color: red;
+}
+</style>
+<h1 style="color: blue;">Style Me in Blue!</h1> inline css
+
 html->
 p-> block
 span->inline
