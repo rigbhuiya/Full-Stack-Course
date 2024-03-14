@@ -1,0 +1,123 @@
+Server-computer listening to request
+Application-Business logic
+Database-Data persisted here
+
+<---------------------NodeJS-------------------->
+NodeJS- It is asynchronous event driven JS runtime environment used to make scalable apps
+It uses v8 engine
+non-blocking hence computer resources are free, has huge ecosystem
+to write files use module fs
+import fs from "fs"
+fs.writeFile("message.txt", "Hello Node", (err) => {
+if (err) throw err;
+console.log("The file has been saved!");
+});
+
+fs.readFile("message.txt", "utf8", (err, data) => {
+if (err) throw err;
+console.log(data);
+});
+
+<---------------------Express----------------------->
+
+It is JS framework
+Makes modular(less code)
+Readability
+Provides middleware
+
+npm i express
+
+import express from "express";
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+res.send("<h1>Home Page</h1>");
+});
+
+app.post("/register", (req, res) => {
+//Do something with the data
+res.sendStatus(201);
+});
+
+app.listen(port, () => {
+console.log(`Server running on port ${port}.`);
+});
+
+<-------------------HTTP-------------------------->
+
+GET-To get info
+POST-To send info
+PUT-replace info
+PATCH-patch info
+DELETE-delete info
+
+HTTP Response codes
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+1. Informational responses (100-199)
+2. Success(200-299)
+3. Redirection Response(300-399)
+4. Client Error(400-499)
+5. Server error(500-599)
+
+<---------------------Express Middleware----------------------->
+
+Sits between raw request that comes and before it is processed by http handlers like get post etc.
+body-parser-> gives request body property
+
+import express from "express";
+import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const \_\_dirname = dirname(fileURLToPath(import.meta.url));
+
+const app = express();
+const port = 3000;
+var bandName = "";
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+res.sendFile(\_\_dirname + "/public/index.html");
+});
+
+app.post("/submit", (req, res) => {
+res.send(`<h1>Your band name is:</h1><h2>${bandName}✌️</h2>`);
+});
+
+app.listen(port, () => {
+console.log(`Listening on port ${port}`);
+});
+
+<-------------------------Custom Middleware---------------------------->
+
+function bandNameGenerator(req, res, next) {
+console.log(req.body);
+bandName = req.body["street"] + req.body["pet"];
+next();
+}
+
+app.use(bandNameGenerator);
+
+<-------------------------------EJS------------------------------------->
+
+Seperation of Concerns
+
+npm i ejs
+
+<% console.log("hello")%> -> JS execute no output
+<%=variable%> -> JS ouput
+<%- <h1>Hello</h1>%> -> Render HTML
+<%- include("file.ejs",{valus:"something"})%> -> Render file
+<%# %> -> Comment tag, no execution, no output
+<%% Outputs a literal '<%'
+-%> Trim-mode ('newline slurp') tag, trims following newline
+<%_ ‘Whitespace Slurping’ Scriptlet tag, strips all whitespace before it
+_%> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
+
+use locals keyword for
+
+app.use(express.static("public"))
