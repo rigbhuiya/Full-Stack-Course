@@ -1,0 +1,30 @@
+It is most downloaded JS library
+document.querySelectorAll("h1")=jQuery("h1")=$("h1")
+$("h1").css("color","red");
+.addClass("class-name class-name-2")
+.hasClass("class-name")=returns true if class-name is part of object
+.text("text")
+.html("<h1>something</h1>")
+.attr()=getting or setting attribute of object
+.click(function (){
+    code...
+})
+.on("event-name", function (){
+    code...
+})
+.before()= adds before selected object
+.after()= adds after
+.prepend()= adds before content of selected objected
+.append()=adds after
+
+.fadeOut()
+.fadeIn()
+.fadeToggle()
+
+.slideUp()
+.slideDown()
+.slideToggle()
+
+.animate()=gradually moves towards css value only css with numeric value
+.slideUp().slideDown().animate({opacity:0.5}) = can be chained
+
