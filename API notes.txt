@@ -3,3 +3,213 @@ const jsondata=JSON.stringify(data i.e Javascript-object)
 Then unpacked by
 const data=JSON.parse(jsondata)
 authorization allows to use api -- authentication helps identify the user
+API= Application programming interface
+Different Api Architectural styles
+REST API - Sets rule for communication. HTTP Protocols
+Private API- API with no docs
+API Endpoint- baseURL/Endpoint
+Query Parameters - baseURL/Endpoint?query=value&query2=value (way to pass key pair values) - filtering and searching resources
+Path Parameters - baseURL/Endpoint/{path-parameters} - used to find specific resources using id or username etc - identifying resource
+JSON looks like JS Object but the keys have "" marks around them
+JS Object is flatpacked in to string which is JSON while sending over internet. JSON.stringify(JS Object)
+On receiving use JSON.parse(JSON) to convert to JS Object again.
+
+To do request use "https" native node module but axios is more compact
+
+
+<----------------Axios------------------->
+
+Syntactically better
+parses Response from JSON to JS Obect.
+npm i axios
+Request method aliases available
+axios.post(url.body/data,config)
+
+app.post("/", async (req, res) => {
+  try {
+    console.log(req.body);
+    const type = req.body.type;
+    const participants = req.body.participants;
+    const response = await axios.get(
+      `https://bored-api.appbrewery.com/filter?type=${type}&participants=${participants}`
+    );
+    const result = response.data;
+    console.log(result);
+    res.render("solution.ejs", {
+      data: result[Math.floor(Math.random() * result.length)],
+    });
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+    res.render("solution.ejs", {
+      error: "No activities that match your criteria.",
+    });
+  }
+});
+
+<-------------------API Authentication--------------------->
+
+Basic Authentication
+"Basic usernamepasswordinbase64encoded" passed in Authorization Key in Header
+API Key Authorization
+Passed in both headers and query params based on api doc
+Bearer Token Authentication 
+
+app.get("/", (req, res) => {
+  res.render("index.ejs", { content: "API Response." });
+});
+
+app.get("/noAuth", async (req, res) => {
+  try {
+    const result = await axios.get(API_URL + "/random");
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+app.get("/basicAuth", async (req, res) => {
+  try {
+    const result = await axios.get(
+      API_URL + "/all?page=2",
+      {},
+      {
+        auth: {
+          username: yourUsername,
+          password: yourPassword,
+        },
+      }
+    );
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+app.get("/apiKey", async (req, res) => {
+  try {
+    const result = await axios.get(API_URL + "/filter", {
+      params: {
+        score: 5,
+        apiKey: yourAPIKey,
+      },
+    });
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+const config = {
+  headers: { Authorization: `Bearer ${yourBearerToken}` },
+};
+
+app.get("/bearerToken", async (req, res) => {
+  try {
+    const result = await axios.get(API_URL + "/secrets/2", config);
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+<--------------------REST API---------------------->
+
+1. Uses standard HTTP Methods
+2. Should have standard data format for responses like JSON. This is representational part of REST.
+3. Client and server are completely seperate. Allows scaling independantly.
+4. Stateless- Every request from client to server should have all information to perform action. The server should not have to keep data from previous request.
+5. Resource Based- Uses URL/URI Universal Resource Identifier Locator to locate resources.
+
+The Internet is successful implementation of RESTful Architecture.
+
+app.get("/random", (req, res) => {
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  res.json(jokes[randomIndex]);
+});
+
+//Get a specific joke
+app.get("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const foundJoke = jokes.find((joke) => joke.id === id);
+  res.json(foundJoke);
+});
+
+//Filter jokes by type
+app.get("/filter", (req, res) => {
+  const type = req.query.type;
+  const filteredActivities = jokes.filter((joke) => joke.jokeType === type);
+  res.json(filteredActivities);
+});
+
+// Post a new joke
+app.post("/jokes", (req, res) => {
+  const newJoke = {
+    id: jokes.length + 1,
+    jokeText: req.body.text,
+    jokeType: req.body.type,
+  };
+  jokes.push(newJoke);
+  console.log(jokes.slice(-1));
+  res.json(newJoke);
+});
+
+//Put a joke
+app.put("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const replacementJoke = {
+    id: id,
+    jokeText: req.body.text,
+    jokeType: req.body.type,
+  };
+
+  const searchIndex = jokes.findIndex((joke) => joke.id === id);
+
+  jokes[searchIndex] = replacementJoke;
+  // console.log(jokes);
+  res.json(replacementJoke);
+});
+
+//Patch a joke
+app.patch("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const existingJoke = jokes.find((joke) => joke.id === id);
+  const replacementJoke = {
+    id: id,
+    jokeText: req.body.text || existingJoke.jokeText,
+    jokeType: req.body.type || existingJoke.jokeType,
+  };
+  const searchIndex = jokes.findIndex((joke) => joke.id === id);
+  jokes[searchIndex] = replacementJoke;
+  console.log(jokes[searchIndex]);
+  res.json(replacementJoke);
+});
+
+//DELETE Specific joke
+//Optional Edge Case Mangement: Can you think of a situation where we might have an issue deleting
+//a specific joke out of the array? Can you think of a solution?
+app.delete("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const searchIndex = jokes.findIndex((joke) => joke.id === id);
+  if (searchIndex > -1) {
+    jokes.splice(searchIndex, 1);
+    res.sendStatus(200);
+  } else {
+    res
+      .status(404)
+      .json({ error: `Joke with id: ${id} not found. No jokes were deleted.` });
+  }
+});
+
+//DELETE All jokes
+app.delete("/all", (req, res) => {
+  const userKey = req.query.key;
+  if (userKey === masterKey) {
+    jokes = [];
+    res.sendStatus(200);
+  } else {
+    res
+      .status(404)
+      .json({ error: `You are not authorised to perform this action.` });
+  }
+});
+
