@@ -2,3 +2,14 @@ postgress password superuser=azkb7911
 port number for server = 5432
 
 https://www.w3schools.com/sql/sql_alter.asp
+
+SQL - Structured Query Language, table, vertical scaling
+NoSQL- Not only SQL, dictionary, both horizontal and vertical scaling ex- mongo dynamo redis(opensource)
+Horizontal scaling-Having more fields
+Vertical Scaling- Having more records
+
+<-----------------------SQL----------------------->
+
+https://www.w3schools.com/sql/
+CRUD Operations
+ACID properties of transaction
